@@ -40,7 +40,7 @@ export default {
     },
     async getProduct() {
       try {
-        const response = await axios.get('/api/display');
+        const response = await axios.get('display');
         this.products = response.data;
          
       } catch (error) {
