@@ -40,12 +40,7 @@ export default {
     },
     async getProduct() {
       try {
-        const response = await axios.get('display',{},{
-             headers: {
-      "Cache-Control": "no-cache",
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-        });
+        const response = await axios.get('display');
         this.products = response.data;
          
       } catch (error) {
