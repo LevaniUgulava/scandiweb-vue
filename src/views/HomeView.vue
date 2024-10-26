@@ -41,9 +41,7 @@ export default {
     },
     async getProduct() {
   try {
-    const response = await axios.get(
-      'https://cors-anywhere.herokuapp.com/http://scandiweb12.000.pe/api/display'
-    );
+    const response = await axios.get('http://scandiweb12.000.pe/display');
     this.products = response.data;
   } catch (error) {
     console.error('Error fetching products:', error);
