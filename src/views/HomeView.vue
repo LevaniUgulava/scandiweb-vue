@@ -40,13 +40,16 @@ export default {
       this.$router.push('/addproduct');
     },
     async getProduct() {
-      try {
-        const response = await axios.get('/api/proxy');
-        this.products = response.data;
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    },
+  try {
+    const response = await axios.get(
+      'https://cors-anywhere.herokuapp.com/http://scandiweb12.000.pe/api/display'
+    );
+    this.products = response.data;
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+}
+
     decodeDetails(details) {
       try {
         const parsedDetails = JSON.parse(details);
