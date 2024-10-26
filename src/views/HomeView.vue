@@ -41,7 +41,7 @@ export default {
     },
     async getProduct() {
       try {
-        const response = await axios.get('/api/display');
+        const response = await axios.get('/api/proxy');
         this.products = response.data;
       } catch (error) {
         console.error('Error fetching products:', error);
