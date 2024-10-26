@@ -41,7 +41,7 @@ export default {
     },
     async getProduct() {
       try {
-        const response = await axios.get('/display'); // Use global axios baseURL
+        const response = await axios.get('/api/display');
         this.products = response.data;
       } catch (error) {
         console.error('Error fetching products:', error);
