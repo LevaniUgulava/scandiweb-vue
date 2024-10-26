@@ -18,7 +18,7 @@
         <p>{{ item.sku }}</p>
         <p>{{ item.name }}</p>
         <p>{{ item.price }}$</p>
-        <p>{{  decodeDetails(item.details) }}</p>
+        <p>{{ decodeDetails(item.details) }}</p>
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   name: 'HomeView',
   data() {
@@ -35,16 +36,15 @@ export default {
     };
   },
   methods: {
-     add() {
+    add() {
       this.$router.push('/addproduct');
     },
     async getProduct() {
       try {
-        const response = await api.get('display');
+        const response = await axios.get('/display'); // Use global axios baseURL
         this.products = response.data;
-         
       } catch (error) {
-        console.log(error);
+        console.error('Error fetching products:', error);
       }
     },
     decodeDetails(details) {
@@ -58,11 +58,14 @@ export default {
         return 'Invalid details';
       }
     },
- 
     async massDelete() {
-      const response = await axios.post('massdelete',{idarray:this.selectedProducts});
-      console.log(response);
-      this.getProduct();
+      try {
+        const response = await axios.post('/massdelete', { idarray: this.selectedProducts });
+        console.log('Delete response:', response);
+        this.getProduct(); // Refresh the product list after deletion
+      } catch (error) {
+        console.error('Error during mass delete:', error);
+      }
     },
   },
   mounted() {
@@ -72,6 +75,7 @@ export default {
 </script>
 
 <style scoped>
+/* Styling remains the same */
 .header {
   display: flex;
   justify-content: space-between;
@@ -105,6 +109,7 @@ export default {
   margin-top: 5%;
   margin-right: 80%;
 }
+
 button {
   cursor: pointer;
   padding: 8px 15px;
