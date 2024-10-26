@@ -3,9 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import axios from "axios";
 
-// Global Axios configuration
-axios.defaults.baseURL = 'http://scandi.infinityfreeapp.com';
-axios.defaults.withCredentials = true; // Include cookies/auth if required
+// Configure Axios to use the proxy path
+axios.defaults.baseURL = '/api';
+axios.defaults.withCredentials = true; // Enable if your backend requires it
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 
 createApp(App).use(router).mount("#app");
