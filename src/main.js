@@ -5,6 +5,5 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://scandi.infinityfreeapp.com';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
-axios.defaults.httpsAgent = new (require('https').Agent)({ rejectUnauthorized: false });
 
 createApp(App).use(router).mount("#app");
